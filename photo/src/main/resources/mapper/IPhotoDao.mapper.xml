@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.city.oa.dao.IPhotoDao">
+
+    <resultMap id="PhotoResultMap" type="photo">
+        <id property="commoditySaleId" column="id"/>
+        <result property="photoName" column="photo_name"/>
+        <result property="photoType" column="photo_type"/>
+    </resultMap>
+
+    <insert id="addPhotoForCommodity" keyColumn="id">
+        insert into commodity_photo (id, photo_name, photo_type)
+        values (#{id},#{fileName},#{fileType});
+    </insert>
+
+    <delete id="deletePhotoForCommodity" >
+        delete from commodity_photo
+        where id = #{id}
+    </delete>
+
+    <select id="getPhotoById" resultMap="PhotoResultMap">
+        select id,photo_name,photo_type from commodity_photo where id = #{id}
+    </select>
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.city.oa.dao.IWordsDao">
+
+
+    <resultMap id="WordsResultMap" type="words">
+        <id property="id" column="ID"/>
+        <result property="words" column="words"/>
+        <result property="wordsTime" column="words_time"/>
+        <result property="commodityId" column="commodity_id"/>
+        <result property="shopperId" column="shopper_id"/>
+    </resultMap>
+
+    <insert id="addWordsForCommodity" keyProperty="id" useGeneratedKeys="true" keyColumn="id" >
+        insert into commodity_words(words,words_time,shopper_id,commodity_id) value (#{words},#{wordsTime},#{shopperId},#{commodityId})
+    </insert>
+
+    <delete id="deleteWordsForCommodity">
+        delete
+        from commodity_words
+        where id = #{id}
+    </delete>
+
+    <select id="selectWordsById" resultMap="WordsResultMap">
+        select *
+        from commodity_words w
+        where id=#{id}
+    </select>
+    <select id="selectWordsByCommodityId" resultMap="WordsResultMap">
+        select *
+        from commodity_words w
+        where commodity_id=#{id}
+    </select>
+    <select id="selectWordsByShopperId" resultMap="WordsResultMap">
+        select *
+        from commodity_words w
+        where shopper_id=#{id}
+    </select>
+
+</mapper>

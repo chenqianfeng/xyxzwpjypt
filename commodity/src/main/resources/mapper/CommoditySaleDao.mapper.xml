@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.city.oa.dao.ICommoditySaleDao">
+
+    <resultMap id="CommoditySaleResultMap" type="commoditySale">
+        <id property="id" column="ID"/>
+        <result property="name" column="name"/>
+        <result property="shabby" column="shabby"/>
+        <result property="viewCount" column="view_count"/>
+        <result property="price" column="price"/>
+        <result property="introduce" column="introduce"/>
+        <result property="releaseDate" column="release_date"/>
+        <result property="status" column="transaction_status"/>
+        <result property="isRecommend" column="is_recommend"/>
+    </resultMap>
+    <resultMap id="shopperResultMap" type="shopper">
+        <id property="id" column="ID"/>
+        <result property="name" column="s_name"/>
+        <result property="age" column="age"/>
+        <result property="gender" column="gender"/>
+        <result property="nickName" column="nickName"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="address" column="address"/>
+    </resultMap>
+    <resultMap id="CommoditySaleDetailResultMap" type="commoditySale" extends="CommoditySaleResultMap">
+        <association property="shopper" column="shopper_id" resultMap="shopperResultMap" javaType="shopper"/>
+        <collection property="words" column="id" select="com.city.oa.dao.IWordsDao.selectWordsByCommodityId" javaType="list" ofType="words"/>
+        <collection property="label" column="id" select="com.city.oa.dao.ILabelDao.selectLabelByCommodityId" javaType="list" ofType="label"/>
+    </resultMap>
+
+    <insert id="addCommoditySale" keyProperty="id" useGeneratedKeys="true">
+        insert into commodity_sale (name, price, shabby, introduce, release_date, view_count, transaction_status,
+                                    shopper_id, is_recommend)
+        value (#{name}, #{price}, #{shabby}, #{introduce}, #{releaseDate}, #{viewCount}, #{status},
+                #{shopper.id}, #{isRecommend})
+    </insert>
+
+
+    <delete id="deleteCommoditySaleById">
+        delete
+        from commodity_sale
+        where id = #{id}
+    </delete>
+
+    <update id="modifyCommoditySale">
+        update commodity_sale
+        set NAME=#{name},
+            price=#{price},
+            shabby=#{shabby},
+            introduce=#{introduce},
+            release_date=#{releaseDate}
+        where Id = #{id}
+    </update>
+
+    <update id="modifyCommoditySaleStatus">
+        update commodity_sale
+        set transaction_status=#{status}
+        where id = #{id}
+    </update>
+
+    <update id="modifyCommoditySaleViewCount">
+        update commodity_sale
+        set view_count = view_count + 1
+        where id = #{id}
+    </update>
+
+    <update id="modifyCommoditySaleToRecommend">
+        update commodity_sale
+        set is_recommend = 1
+        where id = #{id}
+    </update>
+
+    <update id="modifyCommoditySaleCancelRecommend">
+        update commodity_sale
+        set is_recommend = 0
+        where id = #{id}
+    </update>
+
+    <select id="selectCountByCondition" resultType="int">
+        select count(id)
+        from commodity_sale c
+        <if test="label!=0 and label!=null">
+            left join commodity_label l
+            on l.c_id = c.id
+        </if>
+        where 1=1
+        <if test="label!=0 and label!=null">
+            and l.l_id = #{label}
+        </if>
+        <if test="name!=null and name!=''">
+            and c.NAME like concat(concat('%',#{name}),'%')
+        </if>
+        <if test="shopperId!=0 and shopperId!=null">
+            and c.shopper_id = #{shopperId}
+        </if>
+        <if test="status!=0 and status!=null">
+            and c.transaction_status = #{status}
+        </if>
+        <if test="isRecommend!=0 and isRecommend!=null">
+            and c.is_recommend = #{isRecommend}
+        </if>
+        <if test="minPrice!=0 and minPrice != null">
+            and c.PRICE &gt;= #{minPrice}
+        </if>
+        <if test="maxPrice!=0 and maxPrice != null">
+            and c.PRICE &lt;= #{maxPrice}
+        </if>
+    </select>
+
+    <select id="isExistCommoditySale" resultType="int">
+        select count(id)
+        from commodity_sale
+        where id = #{id}
+    </select>
+
+    <select id="selectStatusById" resultType="int">
+        select transaction_status
+        from commodity_sale
+        where id = #{id}
+    </select>
+
+    <select id="selectPriceById" resultType="double">
+        select price
+        from commodity_sale
+        where id = #{id}
+    </select>
+
+    <select id="selectCommoditySaleById" resultMap="CommoditySaleDetailResultMap">
+        select c.*, s.id, s.name s_name, s.age,s.gender, s.nickname, s.phone,  s.email, s.address
+        from commodity_sale c
+                 left join shopper s on c.shopper_id = s.id
+        where c.id = #{id}
+    </select>
+
+    <select id="getCommoditySaleByStatusWithPage" resultMap="CommoditySaleResultMap">
+        select *
+        from commodity_sale
+        where transaction_status = #{status}
+        limit #{start},#{row}
+    </select>
+
+    <select id="getCommoditySaleSoldWithPage" resultMap="CommoditySaleResultMap">
+        select *
+        from commodity_sale
+        where transaction_status = 3 and shopper_id = #{shopperId}
+        limit #{start},#{row}
+    </select>
+
+    <select id="selectListCommoditySaleByLabelWithPage" resultMap="CommoditySaleResultMap">
+        select c.*
+        from commodity_label l
+                 right join commodity_sale c
+                            on l.c_id = c.id
+        where l.l_id = #{label} and c.transaction_status=1
+        limit #{start},#{row}
+    </select>
+
+    <select id="selectListCommoditySaleByShopperWithPage" resultMap="CommoditySaleResultMap">
+        select *
+        from commodity_sale
+        where shopper_id = #{shopperId}
+        limit #{start},#{row}
+    </select>
+
+    <select id="selectListCommodityRecommendByLabelWithPage" resultMap="CommoditySaleResultMap">
+        select c.*
+        from commodity_sale c
+        where c.is_recommend = 1
+        order by view_count desc
+        limit #{start},#{row}
+    </select>
+
+    <select id="selectListCommoditySaleByViewCountAndLabelWithPage" resultMap="CommoditySaleResultMap">
+        select c.*
+        from commodity_sale c
+        <if test="label!=0 and label!=null">
+            left join commodity_label l
+            on l.c_id = c.id
+        </if>
+        where 1=1
+        <if test="label!=0 and label!=null">
+            and l.l_id = #{label}
+        </if>
+        order by view_count desc
+        limit #{start},#{row}
+    </select>
+
+    <select id="selectListCommoditySaleByConditionWithPage" resultMap="CommoditySaleResultMap">
+        select c.*
+        from commodity_sale c
+        <if test="label!=0 and label!=null">
+            left join commodity_label l
+            on l.c_id = c.id
+        </if>
+        where 1=1
+        <if test="label!=0 and label!=null">
+            and l.l_id = #{label}
+        </if>
+        <if test="name!=null and name!=''">
+            and c.NAME like concat(concat('%',#{name}),'%')
+        </if>
+        <if test="minPrice!=0">
+            and c.PRICE &gt;=#{minPrice}
+        </if>
+        <if test="maxPrice!=0">
+            and c.PRICE &lt;=#{maxPrice}
+        </if>
+        limit #{start},#{row}
+    </select>
+
+</mapper>

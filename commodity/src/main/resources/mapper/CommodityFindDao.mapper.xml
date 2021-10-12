@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.city.oa.dao.ICommodityFindDao">
+    <resultMap id="CommodityFindResultMap" type="commodityFind">
+        <id property="id" column="ID"/>
+        <result property="name" column="name"/>
+        <result property="price" column="price"/>
+        <result property="rules" column="rules"/>
+        <result property="releaseDate" column="release_date"/>
+        <result property="status" column="transaction_status"/>
+    </resultMap>
+    <resultMap id="shopperResultMap" type="shopper">
+        <id property="id" column="ID"/>
+        <result property="name" column="s_name"/>
+        <result property="age" column="age"/>
+        <result property="gender" column="gender"/>
+        <result property="nickName" column="nickName"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="address" column="address"/>
+    </resultMap>
+    <resultMap id="CommodityFindDetailResultMap" type="commodityFind" extends="CommodityFindResultMap">
+        <association property="shopper" column="shopper_id" resultMap="shopperResultMap" javaType="shopper"/>
+        <collection property="label" column="id" select="com.city.oa.dao.ILabelDao.selectLabelByCommodityId" javaType="list" ofType="label"/>
+    </resultMap>
+
+    <insert id="addCommodityFind" keyProperty="id" keyColumn="ID" useGeneratedKeys="true">
+        insert into commodity_find (name, price, rules, release_date, transaction_status, shopper_id)
+        values (#{name}, #{price}, #{rules}, #{releaseDate}, #{status}, #{shopper.id})
+    </insert>
+    <delete id="deleteCommodityFindById">
+        delete
+        from commodity_find
+        where id = #{id}
+    </delete>
+    <update id="modifyCommodityFind">
+        update commodity_find
+        set NAME=#{name},
+            price=#{price},
+            rules=#{rules},
+            release_date=#{releaseDate},
+            transaction_status=#{status},
+            shopper_id=#{shopper.id}
+        where Id = #{id}
+    </update>
+    <update id="modifyCommodityFindStatus">
+        update commodity_find
+        set transaction_status=#{status}
+        where id = #{id}
+    </update>
+
+    <select id="selectCommodityFindById" resultMap="CommodityFindDetailResultMap">
+        select c.*, s.id, s.name s_name, s.age,s.gender, s.nickname, s.phone,  s.email, s.address
+        from commodity_find c
+            left join shopper s on c.shopper_id = s.id
+        where c.id = #{id}
+    </select>
+
+    <select id="getCommodityFindByConditionWithPage" resultMap="CommodityFindResultMap">
+        select c.*
+        from commodity_find c
+        where 1=1
+        <if test="name!=null and name!=''">
+            and c.NAME like concat(concat('%',#{name}),'%')
+        </if>
+        <if test="shopperId!=null and shopperId!=''">
+            and c.shopper_id = #{shopperId}
+        </if>
+        <if test="status!=-1 and status!=null">
+            and c.transaction_status = #{status}
+        </if>
+        <if test="minPrice!=0 and minPrice != null">
+            and c.PRICE &gt;=#{minPrice}
+        </if>
+        <if test="maxPrice!=0 and maxPrice != null">
+            and c.PRICE &lt;=#{maxPrice}
+        </if>
+        limit #{start},#{row}
+    </select>
+    <select id="getCountByCondition" resultType="int">
+        select count(id)
+        from commodity_find c
+        where 1=1
+        <if test="name!=null and name!=''">
+            and c.NAME like concat(concat('%',#{name}),'%')
+        </if>
+        <if test="shopperId!=null and shopperId!=''">
+            and c.shopper_id = #{shopperId}
+        </if>
+        <if test="status!=-1 and status!=null">
+            and c.transaction_status = #{status}
+        </if>
+        <if test="minPrice!=0 and minPrice != null">
+            and c.PRICE &gt;=#{minPrice}
+        </if>
+        <if test="maxPrice!=0 and maxPrice != null">
+            and c.PRICE &lt;=#{maxPrice}
+        </if>
+    </select>
+
+</mapper>

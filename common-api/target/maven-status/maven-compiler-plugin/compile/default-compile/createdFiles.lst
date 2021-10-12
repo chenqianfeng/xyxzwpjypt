@@ -1,0 +1,10 @@
+com\city\oa\dto\CommonResult.class
+com\city\oa\model\Collect.class
+com\city\oa\model\CommoditySale.class
+com\city\oa\model\Order.class
+com\city\oa\model\Question.class
+com\city\oa\model\Words.class
+com\city\oa\model\Photo.class
+com\city\oa\model\Label.class
+com\city\oa\model\CommodityFind.class
+com\city\oa\model\Shopper.class

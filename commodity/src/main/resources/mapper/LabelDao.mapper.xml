@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.city.oa.dao.ILabelDao">
+
+    <resultMap id="LabelResultMap" type="label">
+        <id property="id" column="ID"/>
+        <result property="kind" column="KIND"/>
+    </resultMap>
+
+    <!--    label本身操作-->
+    <insert id="addLabel" keyProperty="id" keyColumn="ID" useGeneratedKeys="true">
+        insert into label (kind)
+        value (#{kind})
+    </insert>
+
+    <delete id="deleteLabelById">
+        delete
+        from label
+        where id = #{id}
+    </delete>
+
+    <select id="selectLabelByPage" resultMap="LabelResultMap">
+        select l.*
+        from label l
+        limit #{start},#{row}
+    </select>
+
+    <select id="selectLabelById" resultMap="LabelResultMap">
+        select l.*
+        from label l
+        where l.id = #{id}
+    </select>
+
+    <select id="selectLabelByKey" resultMap="LabelResultMap">
+        select l.*
+        from label l
+        where l.kind like concat(concat('%', #{kind}), '%')
+    </select>
+
+    <insert id="addLabelForCommodity">
+        insert into commodity_label (c_id,l_id)values
+        <foreach collection="lId" item="l" separator=",">
+            (#{cId},#{l})
+        </foreach>
+    </insert>
+
+    <delete id="deleteLabelForCommodity">
+        delete from commodity_label where c_id=#{cId}
+    </delete>
+
+    <select id="selectLabelByCommodityId" resultMap="LabelResultMap">
+        select *
+        from label
+        where id in (
+            select l_id
+            from commodity_label
+            where c_id = #{id})
+    </select>
+
+
+</mapper>

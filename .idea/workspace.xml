@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="AutomaticModuleUnloader">
+    <loaded-modules>
+      <module name="gateway" />
+      <module name="order" />
+      <module name="xyxzwpjypt" />
+      <module name="commodity" />
+      <module name="configServer" />
+      <module name="shopper" />
+      <module name="common-api" />
+      <module name="eurekaServer" />
+      <module name="photo" />
+    </loaded-modules>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="958af108-4c2d-4766-bde0-f7b5e55bf216" name="默认的" comment="默认的" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaFXApplication" />
+        <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/configServer/src/main/resources/configs" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/common-api/src/main/java/com/city/oa/dto/CommonResult.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
+  <component name="ProjectId" id="1pp4SxnTTifDgYPjUQ91g6HPXdH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="public" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/order/src/main/java/com/city/oa/service" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="模块" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.25445026" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\毕业设计\毕业设计\xyxzwpjypt\shopper\src\main\java\com\city\oa\config" />
+      <recent name="E:\毕业设计\毕业设计\xyxzwpjypt\order\src\main\java\com\city\oa" />
+      <recent name="E:\毕业设计\毕业设计\xyxzwpjypt\shopper\src\main\java\com\city\oa" />
+      <recent name="E:\毕业设计\毕业设计\xyxzwpjypt\commodity\src\main\java\com\city\oa" />
+      <recent name="E:\毕业设计\毕业设计\xyxzwpjypt\order\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\毕业设计\毕业设计\xyxzwpjypt\configServer\src\main\java" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.city.oa.service" />
+      <recent name="com.city.oa.filter" />
+      <recent name="com.city.oa.utils" />
+      <recent name="com.city.oa.config" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="Application" />
+        <option value="MavenRunConfiguration" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="应用程序.Shopper8030">
+    <configuration name="CommodityProvider8010" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.city.oa.CommodityProvider8010" />
+      <module name="commodity" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.city.oa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Gateway80" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.city.oa.Gateway80" />
+      <module name="gateway" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.city.oa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Order8040" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.city.oa.Order8040" />
+      <module name="order" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.city.oa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Photo8020" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.city.oa.Photo8020" />
+      <module name="photo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.city.oa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Shopper8030" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.city.oa.Shopper8030" />
+      <module name="shopper" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.city.oa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommodityProvider8010" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="commodity" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.city.oa.CommodityProvider8010" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Order8040" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="order" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.city.oa.Order8040" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="应用程序.Gateway80" />
+      <item itemvalue="应用程序.CommodityProvider8010" />
+      <item itemvalue="应用程序.Order8040" />
+      <item itemvalue="应用程序.Photo8020" />
+      <item itemvalue="应用程序.Shopper8030" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="应用程序.Shopper8030" />
+        <item itemvalue="应用程序.Photo8020" />
+        <item itemvalue="应用程序.Order8040" />
+        <item itemvalue="应用程序.CommodityProvider8010" />
+        <item itemvalue="应用程序.Gateway80" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringGeneralSettings">
+    <option name="showProfilesPanel" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="958af108-4c2d-4766-bde0-f7b5e55bf216" name="默认的" comment="" />
+      <created>1615866702448</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615866702448</updated>
+      <workItem from="1615866704757" duration="685000" />
+      <workItem from="1616120397120" duration="3085000" />
+      <workItem from="1616129032661" duration="10463000" />
+      <workItem from="1616213064962" duration="3357000" />
+      <workItem from="1616227105434" duration="8353000" />
+      <workItem from="1616293174984" duration="18048000" />
+      <workItem from="1616330757924" duration="482000" />
+      <workItem from="1616377811114" duration="30000" />
+      <workItem from="1616377856182" duration="342000" />
+      <workItem from="1616378215322" duration="239000" />
+      <workItem from="1616378473500" duration="229000" />
+      <workItem from="1616378800228" duration="181000" />
+      <workItem from="1616378998633" duration="48000" />
+      <workItem from="1616379062527" duration="25000" />
+      <workItem from="1616379102602" duration="16000" />
+      <workItem from="1616379135185" duration="20000" />
+      <workItem from="1616379170384" duration="16346000" />
+      <workItem from="1616467217896" duration="20794000" />
+      <workItem from="1616548365196" duration="6077000" />
+      <workItem from="1616565705662" duration="9222000" />
+      <workItem from="1616640194321" duration="7994000" />
+      <workItem from="1616655974020" duration="8687000" />
+      <workItem from="1616718313746" duration="21595000" />
+      <workItem from="1616805114959" duration="3840000" />
+      <workItem from="1616827451645" duration="2373000" />
+      <workItem from="1616892069897" duration="13414000" />
+      <workItem from="1616981340727" duration="2116000" />
+      <workItem from="1616988227569" duration="23347000" />
+      <workItem from="1617151581183" duration="23193000" />
+      <workItem from="1617235757744" duration="9519000" />
+      <workItem from="1617249569391" duration="18000" />
+      <workItem from="1617249716915" duration="2467000" />
+      <workItem from="1617258584753" duration="3874000" />
+      <workItem from="1617336023493" duration="14139000" />
+      <workItem from="1617354849769" duration="4949000" />
+      <workItem from="1617408263858" duration="9536000" />
+      <workItem from="1617451950472" duration="26230000" />
+      <workItem from="1617580466759" duration="15461000" />
+      <workItem from="1617605112002" duration="2126000" />
+      <workItem from="1617609578843" duration="8941000" />
+      <workItem from="1617667149937" duration="19021000" />
+      <workItem from="1617692177428" duration="3057000" />
+      <workItem from="1617772331517" duration="5113000" />
+      <workItem from="1617782864827" duration="1433000" />
+      <workItem from="1617802663079" duration="585000" />
+      <workItem from="1617849132788" duration="30000" />
+      <workItem from="1617857759348" duration="350000" />
+      <workItem from="1617860075246" duration="7362000" />
+      <workItem from="1617933277562" duration="6593000" />
+      <workItem from="1617943349421" duration="140000" />
+      <workItem from="1617947470801" duration="4980000" />
+      <workItem from="1617958915970" duration="1816000" />
+      <workItem from="1617960772059" duration="1488000" />
+      <workItem from="1618281171772" duration="59000" />
+      <workItem from="1618281246219" duration="383000" />
+      <workItem from="1618281648551" duration="47000" />
+      <workItem from="1618281709844" duration="79000" />
+      <workItem from="1618281818283" duration="319000" />
+      <workItem from="1618282154449" duration="8986000" />
+      <workItem from="1618366643681" duration="1451000" />
+      <workItem from="1618373797850" duration="1190000" />
+      <workItem from="1618447870655" duration="1978000" />
+      <workItem from="1618450212041" duration="3365000" />
+      <workItem from="1618473441930" duration="1280000" />
+      <workItem from="1618533963435" duration="6325000" />
+      <workItem from="1618705281425" duration="396000" />
+      <workItem from="1618707707791" duration="1230000" />
+      <workItem from="1618879662810" duration="2871000" />
+      <workItem from="1618905574136" duration="762000" />
+      <workItem from="1619399889261" duration="104000" />
+      <workItem from="1619490046872" duration="2775000" />
+      <workItem from="1619679014850" duration="616000" />
+      <workItem from="1619744222501" duration="1346000" />
+      <workItem from="1619859188514" duration="3840000" />
+      <workItem from="1619915726891" duration="5412000" />
+      <workItem from="1619933357746" duration="4766000" />
+      <workItem from="1620003290738" duration="594000" />
+      <workItem from="1620009055370" duration="8095000" />
+      <workItem from="1620026195614" duration="2244000" />
+      <workItem from="1620032813304" duration="3001000" />
+      <workItem from="1620084488169" duration="9408000" />
+      <workItem from="1620103322556" duration="11650000" />
+      <workItem from="1620170399912" duration="20949000" />
+      <workItem from="1620219464435" duration="1638000" />
+      <workItem from="1620252359062" duration="3947000" />
+      <workItem from="1620304946123" duration="7348000" />
+      <workItem from="1620312990496" duration="613000" />
+      <workItem from="1620313933565" duration="491000" />
+      <workItem from="1620315008857" duration="959000" />
+      <workItem from="1620390733771" duration="118000" />
+      <workItem from="1620390893675" duration="609000" />
+      <workItem from="1620424856819" duration="1711000" />
+      <workItem from="1620476911828" duration="8066000" />
+      <workItem from="1620485551432" duration="2830000" />
+      <workItem from="1620514303051" duration="3601000" />
+      <workItem from="1620523475868" duration="1633000" />
+      <workItem from="1620526294630" duration="2505000" />
+      <workItem from="1620538779648" duration="9633000" />
+      <workItem from="1620626765248" duration="9300000" />
+      <workItem from="1620645509116" duration="4935000" />
+      <workItem from="1620691443421" duration="22736000" />
+      <workItem from="1620778662176" duration="1718000" />
+      <workItem from="1621241536674" duration="4000" />
+      <workItem from="1621642732237" duration="2075000" />
+      <workItem from="1621732992116" duration="624000" />
+      <workItem from="1621742140003" duration="1584000" />
+      <workItem from="1621756416893" duration="9000" />
+      <workItem from="1621757818205" duration="127000" />
+      <workItem from="1621757960891" duration="102000" />
+      <workItem from="1622254419702" duration="42000" />
+      <workItem from="1622254473814" duration="670000" />
+      <workItem from="1622340467913" duration="1274000" />
+      <workItem from="1622341771219" duration="4139000" />
+      <workItem from="1623054453660" duration="710000" />
+      <workItem from="1623056079153" duration="715000" />
+      <workItem from="1623063750108" duration="2762000" />
+      <workItem from="1623113141666" duration="6028000" />
+      <workItem from="1623127283026" duration="703000" />
+      <workItem from="1623132148036" duration="723000" />
+      <workItem from="1623312031038" duration="210000" />
+      <workItem from="1623320594823" duration="597000" />
+      <workItem from="1623329892436" duration="1027000" />
+      <workItem from="1623365569963" duration="3125000" />
+      <workItem from="1623372244712" duration="1434000" />
+    </task>
+    <task id="LOCAL-00001" summary="默认的">
+      <created>1617609620414</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1617609620414</updated>
+    </task>
+    <task id="LOCAL-00002" summary="默认的">
+      <created>1617611413644</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1617611413644</updated>
+    </task>
+    <task id="LOCAL-00003" summary="默认的">
+      <created>1617669158772</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1617669158772</updated>
+    </task>
+    <task id="LOCAL-00004" summary="默认的">
+      <created>1617867840535</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1617867840535</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/configServer/src/main/resources/configs" />
+    </ignored-roots>
+    <MESSAGE value="默认的" />
+    <option name="LAST_COMMIT_MESSAGE" value="默认的" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="com.alibaba.nacos.api.exception.NacosException" package="com.alibaba.nacos.api.exception" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

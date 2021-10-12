@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.city.oa.dao.IOrderDao">
+
+    <resultMap id="commoditySaleResultMap" type="commoditySale">
+        <id property="id" column="c_id"/>
+        <result property="name" column="c_name"/>
+        <result property="shabby" column="shabby"/>
+        <result property="price" column="price"/>
+        <result property="introduce" column="introduce"/>
+        <result property="releaseDate" column="release_date"/>
+        <result property="isRecommend" column="is_recommend"/>
+    </resultMap>
+    <resultMap id="shopperResultMap" type="shopper">
+        <id property="id" column="s_id"/>
+        <result property="name" column="s_name"/>
+        <result property="age" column="age"/>
+        <result property="gender" column="gender"/>
+        <result property="nickName" column="nickName"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="address" column="address"/>
+    </resultMap>
+    <resultMap id="orderResultMap" type="order">
+        <id column="id" property="id"/>
+        <result property="status" column="order_status"/>
+        <result property="payMoney" column="pay_money"/>
+        <result property="createTime" column="create_time"/>
+        <result property="payTime" column="pay_time"/>
+        <result property="successTime" column="success_time"/>
+        <result property="estimate" column="estimate"/>
+        <association property="commoditySale" resultMap="commoditySaleResultMap" javaType="CommoditySale"/>
+        <association property="shopper" resultMap="shopperResultMap" javaType="Shopper"/>
+    </resultMap>
+
+    <insert id="addOrder" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
+        insert into order_s (order_status, commodity_id, shopper_id, pay_money, estimate, create_time, pay_time,
+                             success_time)
+            value (#{status}, #{commoditySale.id}, #{shopper.id}, #{payMoney}, #{estimate}, #{createTime}, #{payTime},
+                   #{successTime})
+    </insert>
+
+    <delete id="deleteOrder">
+        delete
+        from order_s
+        where id = #{id}
+    </delete>
+
+    <update id="modifyOrderStatus" >
+        update order_s
+        set order_status = #{status}
+        where id = #{id}
+    </update>
+
+    <update id="modifyOrderPayTime">
+        update order_s
+        set pay_time = #{time}
+        where id = #{id}
+    </update>
+
+    <update id="modifyOrderSuccessTime">
+        update order_s
+        set success_time = #{time}
+        where id = #{id}
+    </update>
+
+    <update id="modifyOrderEstimateTime">
+        update order_s
+        set success_time = #{time}
+        where id = #{id}
+    </update>
+
+    <select id="selectOrderById" resultMap="orderResultMap">
+        select o.*,
+               c.id c_id,c.name c_name,c.shabby, c.price, c.introduce, c.release_date, is_recommend,
+               s.id s_id, s.name s_name, age, gender, nickname, phone, email, address
+        from order_s o
+                 left join commodity_sale c on o.commodity_id = c.id
+                 left join shopper s on o.shopper_id = s.id
+        where o.id = #{id}
+    </select>
+
+    <select id="selectOrderByShopper" resultMap="orderResultMap">
+        select o.*, s.nickname, c.name c_name
+        from order_s o
+                 left join commodity_sale c on o.commodity_id = c.id
+                 left join shopper s on o.shopper_id = s.id
+        where s.id = #{shopperId}
+    </select>
+
+    <select id="selectCountByCondition" resultType="int">
+        select count(o.id)
+        from order_s o
+        where o.shopper_id = #{shopperId}
+        <if test="status>0">
+            and o.order_status = #{status}
+        </if>
+    </select>
+
+    <select id="selectOrderByShopperAndStatus" resultMap="orderResultMap">
+        select o.*,
+               c.name c_name,
+               s.name s_name
+        from shopper s
+                 left join order_s o on o.shopper_id = s.id
+                 left join commodity_sale c on c.id = o.commodity_id
+        where s.id = #{shopperId}
+          and o.order_status = #{status}
+    </select>
+
+    <update id="estimateOrder">
+        update order_s
+        set estimate = #{words}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteEstimate">
+        update order_s
+        set estimate = null
+        where id = #{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,39 @@
+server:
+  port: 8010
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: provider-commodity
+  redis:
+    host: 139.196.211.138
+    port: 6379
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 139.196.211.138:8848
+      config:
+        server-addr: http://139.196.211.138:8848
+        file-extension: yml
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 15MB
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.city.oa.model
+logging:
+  level:
+    com:
+      city:
+        oa:
+          dao: debug
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

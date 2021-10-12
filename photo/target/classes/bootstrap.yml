@@ -1,0 +1,32 @@
+server:
+  port: 8020
+spring:
+  application:
+    name: provider-photo
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 139.196.211.138:8848
+      config:
+        server-addr: 139.196.211.138:8848
+        file-extension: yml
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 15MB
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.city.oa.model
+logging:
+  level:
+    com:
+      city:
+        oa:
+          dao: debug

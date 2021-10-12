@@ -1,0 +1,40 @@
+server:
+  port: 80
+spring:
+  application:
+    name: gateway-80
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 139.196.211.138:8848
+      config:
+        server-addr: 139.196.211.138:8848
+        file-extension: yml
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: commodity-route
+          uri: lb://provider-commodity
+          predicates:
+            - Path=/commodity/**,/label/**
+            - Header=token,\w{8}(-\w{4}){3}-\w{12}?
+
+        - id: order-route
+          uri: lb://provider-order
+          predicates:
+            - Path=/order/**
+
+        - id: photo-route
+          uri: lb://provider-photo
+          predicates:
+            - Path=/photo/**
+
+        - id: shopper-route
+          uri: lb://provider-shopper
+          predicates:
+            - Path=/shopper/**,/admin/**,/logon,/retrieve/**,/register,/logon/phone
+
+
+

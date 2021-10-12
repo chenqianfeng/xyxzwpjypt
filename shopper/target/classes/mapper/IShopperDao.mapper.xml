@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.city.oa.dao.IShopperDao">
+    <resultMap id="questionResultMap" type="question">
+        <id column="question_id" property="questionId"/>
+        <result column="question" property="question"/>
+    </resultMap>
+    <resultMap id="shopperResultMap" type="shopper">
+        <id property="id" column="ID"/>
+        <result property="name" column="name"/>
+        <result property="gender" column="gender"/>
+        <result property="nickName" column="nickName"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="address" column="address"/>
+        <result property="answer;" column="answer"/>
+        <result property="password" column="password"/>
+        <result property="credit" column="credit"/>
+        <result property="power" column="power"/>
+        <association property="question" column="question_id" resultMap="questionResultMap" javaType="question"/>
+    </resultMap>
+    <resultMap id="CommoditySaleResultMap" type="commoditySale">
+        <id property="id" column="ID"/>
+        <result property="name" column="name"/>
+        <result property="shabby" column="shabby"/>
+        <result property="viewCount" column="view_count"/>
+        <result property="price" column="price"/>
+        <result property="introduce" column="introduce"/>
+        <result property="releaseDate" column="release_date"/>
+        <result property="status" column="transaction_status"/>
+        <result property="isRecommend" column="is_recommend"/>
+    </resultMap>
+
+
+    <insert id="addShopper" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into shopper( name,age, gender, nickname, phone, email, address, answer, password, credit, power,
+                            question_id)
+            value ( #{name},#{age}, #{gender}, #{nickName}, #{phone}, #{email}, #{address}, #{answer}, #{password},
+                   #{credit}, #{power}, #{question.questionId})
+    </insert>
+
+    <update id="updateShopper">
+        update shopper
+        set name     = #{name},
+            age      = #{age},
+            gender   = #{gender},
+            nickname = #{nickName},
+            phone    = #{phone},
+            email    = #{email},
+            address  = #{address}
+        where id=#{id}
+    </update>
+
+    <update id="updatePassword" >
+        update shopper
+        set password = #{password}
+        where id = #{id}
+    </update>
+
+    <update id="updateQuestion" >
+        update shopper
+        set question_id = #{question},
+            answer      = #{answer}
+        where id = #{id}
+    </update>
+
+    <select id="selectById" resultMap="shopperResultMap">
+        select  id,name,age, gender, nickname, phone, email, address,credit, power from shopper where id = #{id}
+    </select>
+
+    <select id="selectByPhone" resultMap="shopperResultMap">
+        select id, name,age, gender, nickname, phone, email, address,credit, power from shopper where phone = #{phone}
+    </select>
+
+    <select id="haveQuestion" resultType="int">
+        select count(id) from shopper where id=#{id} and question_id is not null
+    </select>
+
+    <select id="verifyAnswer" resultType="int">
+        select count(id) from shopper where id=#{id} and answer = #{answer}
+    </select>
+
+    <select id="verifyPassword" resultType="int">
+        select count(id) from shopper where id=#{id} and password = #{password}
+    </select>
+
+    <select id="verifyPasswordByPhone" resultType="int">
+        select count(id) from shopper where phone=#{phone} and password = #{password}
+    </select>
+
+    <select id="selectCollectByShopperId" resultMap="CommoditySaleResultMap">
+        select c.* from shopper s
+            left join shopper_collect sc on s.id = sc.shopper_id
+            left join commodity_sale c on c.id = sc.commodity_id
+        where s.id = #{id}
+        limit #{start},#{row}
+    </select>
+
+    <insert id="addToCollect">
+        insert into shopper_collect(shopper_id, commodity_id) value (#{shopperId},#{commodityId})
+    </insert>
+
+    <delete id="deleteFromCollect" >
+        delete from shopper_collect where shopper_id = #{shopperId} and commodity_id = #{commodityId}
+    </delete>
+
+    <select id="getListQuestion" resultMap="questionResultMap">
+        select question_id,question from security_q limit #{start},#{row}
+    </select>
+
+    <select id="getQuestionById" resultMap="questionResultMap">
+        select question_id,question from security_q where question_id = #{id}
+    </select>
+
+    <update id="changeCredit">
+        update shopper set credit = #{credit} where id = #{id}
+    </update>
+
+    <update id="changePower">
+        update shopper set power = #{power} where id = #{id}
+    </update>
+
+</mapper>

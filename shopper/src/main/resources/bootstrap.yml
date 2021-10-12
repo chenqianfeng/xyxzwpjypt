@@ -1,0 +1,31 @@
+server:
+  port: 8030
+spring:
+  application:
+    name: provider-shopper
+  profiles:
+    active: dev
+  redis:
+    host: 139.196.211.138
+    port: 6379
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 139.196.211.138:8848
+      config:
+        server-addr: 139.196.211.138:8848
+        file-extension: yml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.city.oa.model
+logging:
+  level:
+    com:
+      city:
+        oa:
+          dao: debug
